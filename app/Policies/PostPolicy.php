@@ -30,18 +30,18 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        foreach($user->roles as $role)
-        {
-            foreach($role->permissions as $permission)
-            {
-                if($permission->id == 1)
-                {
-                    return true;
-                }
-            }
-        }
+        // foreach($user->roles as $role)
+        // {
+        //     foreach($role->permissions as $permission)
+        //     {
+        //         if($permission->id == 1)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        // }
 
-        return false;
+        // return false;
     }
 
     /**
@@ -54,18 +54,18 @@ class PostPolicy
     public function update(User $user)
     {
         
-        foreach($user->roles as $role)
-        {
-            foreach($role->permissions as $permission)
-            {
-                if($permission->id == 3)
-                {
-                    return true;
-                }
-            }
-        }
+        // foreach($user->roles as $role)
+        // {
+        //     foreach($role->permissions as $permission)
+        //     {
+        //         if($permission->id == 3)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        // }
 
-        return false;
+        // return false;
     }
 
     /**
@@ -78,18 +78,18 @@ class PostPolicy
     public function delete(User $user)
     {
         
-        foreach($user->roles as $role)
-        {
-            foreach($role->permissions as $permission)
-            {
-                if($permission->id == 5)
-                {
-                    return true;
-                }
-            }
-        }
+        // foreach($user->roles as $role)
+        // {
+        //     foreach($role->permissions as $permission)
+        //     {
+        //         if($permission->id == 5)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        // }
 
-        return false;
+        // return false;
     }
 
     /**

@@ -24,6 +24,11 @@ class CreatePermissionsTable extends Migration
             $table->integer('role_id');
             $table->integer('permission_id');
         });
+
+        // Schema::create('permission_user', function($table){
+        //     $table->integer('user_id');
+        //     $table->integer('permission_id');
+        // });
     }
 
     /**

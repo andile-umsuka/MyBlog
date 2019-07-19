@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use App\Permission;
 
 class UserController extends Controller
 {
@@ -31,6 +32,7 @@ class UserController extends Controller
         if(Gate::allows('users.create', Auth::user()))
         {
             $roles=Role::all();
+            $permissions=Permission::all();
             return view('user.create', compact('roles'));
         }else{
             return redirect(route('user.index'))->with('failure', 'Unauthorized access');
@@ -59,6 +61,7 @@ class UserController extends Controller
 
         $user->save();
         $user->roles()->sync($request->role);
+        $user->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'User created successfully');
     }
 
@@ -85,7 +88,8 @@ class UserController extends Controller
         {
             $user=User::find($id);
             $roles=Role::all();
-            return view('user.edit', compact('user','roles'));
+            $permissions=Permission::all();
+            return view('user.edit', compact('user','roles','permissions'));
         }else
         {
             return redirect(route('user.index'))->with('failure', 'Unauthorized access');
@@ -105,8 +109,9 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
         ]);
-        $user=User::where('id', $id)->update($request->except('_token', '_method', 'role'));
+        $user=User::where('id', $id)->update($request->except('_token', '_method', 'role', 'permission'));
         User::find($id)->roles()->sync($request->role);
+        User::find($id)->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'Role updated successfully');
     }
 

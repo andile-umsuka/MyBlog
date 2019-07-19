@@ -56,6 +56,18 @@
                                         </div>
                                         </div>
                                         <div class="form-group">
+                                        <label>Give Permission</label>
+                                        <div class="row">
+                                        @foreach($permissions as $permission)
+                                            <div class="col-lg-3">
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"> {{ $permission->name }}</label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             <a href="{{ route('user.index') }}" class="btn btn-warning">Back</a>
                                         </div>
