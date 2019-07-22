@@ -33,7 +33,7 @@ class UserPolicy
         {
             foreach($role->permissions as $permission)
             {
-                if($permission->id == 2)
+                if($permission->id == 4)
                 {
                     return true;
                 }
@@ -55,7 +55,7 @@ class UserPolicy
         {
             foreach($role->permissions as $permission)
             {
-                if($permission->id == 6)
+                if($permission->id == 5)
                 {
                     return true;
                 }
@@ -77,7 +77,7 @@ class UserPolicy
         {
             foreach($role->permissions as $permission)
             {
-                if($permission->id == 7)
+                if($permission->id == 6)
                 {
                     return true;
                 }

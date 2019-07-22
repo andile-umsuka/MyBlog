@@ -33,7 +33,7 @@ class UserController extends Controller
         {
             $roles=Role::all();
             $permissions=Permission::all();
-            return view('user.create', compact('roles'));
+            return view('user.create', compact('roles','permissions'));
         }else{
             return redirect(route('user.index'))->with('failure', 'Unauthorized access');
         }

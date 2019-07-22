@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="form-group">
                                             <label for="for">Permission For</label>
-                                            <select name="for" id="for" class="form conttrol" value={{ $permission->for }}>
+                                            <select name="for" id="for" class="form conttrol" value="{{ old('for') }}">
                                                 <option selected disable>Select Permission for</option>
                                                 <option value="post">Post</option>
                                                 <option value="user">User</option>

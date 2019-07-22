@@ -41,7 +41,13 @@
                                         @foreach($roles as $role)
                                             <div class="col-lg-3">
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="role[]" value="{{ $role->id }}"> {{ $role->name }}</label>
+                                                    <label><input type="checkbox" name="role[]" value="{{ $role->id }}"
+                                                        @foreach ($user->roles as $user_role)
+                                                            @if ($user_role-> id == $role->id)
+                                                                checked
+                                                            @endif
+                                                        @endforeach    
+                                                    > {{ $role->name }}</label>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -53,7 +59,12 @@
                                         @foreach($permissions as $permission)
                                             <div class="col-lg-3">
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"> {{ $permission->name }}</label>
+                                                    <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"                                                        
+                                                        @foreach ($role->permissions as $role_permit)
+                                                                @if ($role_permit->id == $permission->id)
+                                                                    checked                                                                    
+                                                                @endif
+                                                            @endforeach> {{ $permission->name }}</label>
                                                 </div>
                                             </div>
                                         @endforeach
