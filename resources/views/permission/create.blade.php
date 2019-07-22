@@ -24,7 +24,7 @@
                                 
                                 <div class="form-group">
                                     <label for="name">Permission Name</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Post title" name="name">
+                                    <input type="text" class="form-control" id="title" placeholder="Permission" name="name">
                                 </div>
                                 <div class="form-group">
                                         <label for="for">Permission For</label>
