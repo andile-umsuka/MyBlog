@@ -25,6 +25,10 @@
                                             <label for="name">Role Name</label>
                                             <input type="text" class="form-control" id="title" placeholder="Role" name="name">
                                     </div>
+                                    <div class="checkbox">
+                                            <label for="selectall">Select All</label>
+                                            <input type="checkbox" id="selectall" onClick="selectAll(this)">
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="name">Permissions</label>
@@ -63,3 +67,10 @@
     </section>
 </div>
 @endsection
+<script language="JavaScript">
+        function selectAll(source) {
+            checkboxes = document.getElementsByName('permission[]');
+            for(var i in checkboxes)
+                checkboxes[i].checked = source.checked;
+        }
+    </script>
