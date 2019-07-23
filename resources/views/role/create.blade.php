@@ -8,14 +8,14 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Posts</h3>
                     @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>                 
                     <form action="{{ route('role.store') }}" method="POST">
                       {{ csrf_field() }}

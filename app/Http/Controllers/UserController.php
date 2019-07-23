@@ -52,6 +52,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
+
         $request['password'] = bcrypt($request->password);
         
         $user=new User();
@@ -59,9 +60,9 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
 
+
         $user->save();
         $user->roles()->sync($request->role);
-        $user->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'User created successfully');
     }
 
@@ -111,7 +112,7 @@ class UserController extends Controller
         ]);
         $user=User::where('id', $id)->update($request->except('_token', '_method', 'role', 'permission'));
         User::find($id)->roles()->sync($request->role);
-        User::find($id)->permissions()->sync($request->permission);
+        //User::find($id)->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'Role updated successfully');
     }
 
@@ -131,5 +132,20 @@ class UserController extends Controller
         {
             return redirect(route('user.index'))->with('failure', 'Unauthorized access');
         }
+    }
+
+    public function permission($id, Request $request)
+    {
+        $users=User::all();
+            foreach($users as $user)
+            {
+                if($user->id == $id)
+                {
+                    $role=Role::all();
+                    $role->permissions()->sync($request->permission);
+                    //$role->save();
+                }
+            }
+        return redirect(route('permission.create'))->with('users', $users);
     }
 }

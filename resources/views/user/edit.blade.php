@@ -54,21 +54,28 @@
                                         </div>
                                         </div>
                                         <div class="form-group">
-                                        <label>Assign Role</label>
-                                        <div class="row">
-                                        @foreach($permissions as $permission)
-                                            <div class="col-lg-3">
-                                                <div class="checkbox">
-                                                    <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"                                                        
-                                                        @foreach ($role->permissions as $role_permit)
-                                                                @if ($role_permit->id == $permission->id)
-                                                                    checked                                                                    
-                                                                @endif
-                                                            @endforeach> {{ $permission->name }}</label>
-                                                </div>
+                                            <div class="checkbox">                                               
+                                                <label>Select All Permissions <input type="checkbox" id="selectall" onclick="selectAll(this)" ></label>
                                             </div>
-                                        @endforeach
                                         </div>
+                                        <div class="form-group">
+                                            <label>Give Permission</label>   
+                                        <div class="row">                                                                                                                         
+                                            @foreach($permissions as $permission)
+                                                <div class="col-lg-3">
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"
+                                                            @foreach ($user->permissions as $user_permission)
+                                                            @if ($user_permission-> id == $permission->id)
+                                                                checked
+                                                            @endif
+                                                                
+                                                            @endforeach
+                                                            > {{ $permission->name }}</label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -85,3 +92,10 @@
     </section>
 </div>
 @endsection
+<script language="JavaScript">
+    function selectAll(source) {
+        checkboxes = document.getElementsByName('permission[]');
+        for(var i in checkboxes)
+            checkboxes[i].checked = source.checked;
+    }
+</script>
