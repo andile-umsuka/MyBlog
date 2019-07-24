@@ -22,4 +22,4 @@ Route::resource('post', 'PostController');
 Route::resource('role', 'RoleController');
 Route::resource('permission', 'PermissionController');
 Route::resource('user', 'UserController');
-Route::post('permission', 'UserController@permission')->name('permission.assign');
+Route::post('role', 'RoleController@permission')->name('permission.assign');

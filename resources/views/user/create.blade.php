@@ -55,9 +55,11 @@
                                                 @endforeach
                                                 </div>
                                             </div>
-                                            <div class="checkbox">
-                                                <label>Select All Permissions <input type="checkbox" id="selectall" onclick="selectAll(this)" ></label>
-                                        </div>
+                                            <div class="form-group">
+                                                <div class="checkbox">                                               
+                                                    <label>Select All Permissions <input type="checkbox" id="selectall" onclick="selectAll(this)" ></label>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                     <label>Give Permission</label>   
                                                 <div class="row">
@@ -88,10 +90,3 @@
     </section>
 </div>
 @endsection
-<script language="JavaScript">
-        function selectAll(source) {
-            checkboxes = document.getElementsByName('permission[]');
-            for(var i in checkboxes)
-                checkboxes[i].checked = source.checked;
-        }
-    </script>

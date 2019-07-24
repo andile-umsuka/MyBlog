@@ -63,6 +63,7 @@ class UserController extends Controller
 
         $user->save();
         $user->roles()->sync($request->role);
+        $user->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'User created successfully');
     }
 
@@ -74,7 +75,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -112,7 +113,7 @@ class UserController extends Controller
         ]);
         $user=User::where('id', $id)->update($request->except('_token', '_method', 'role', 'permission'));
         User::find($id)->roles()->sync($request->role);
-        //User::find($id)->permissions()->sync($request->permission);
+        User::find($id)->permissions()->sync($request->permission);
         return redirect(route('user.index'))->with('message', 'Role updated successfully');
     }
 
@@ -134,18 +135,18 @@ class UserController extends Controller
         }
     }
 
-    public function permission($id, Request $request)
-    {
-        $users=User::all();
-            foreach($users as $user)
-            {
-                if($user->id == $id)
-                {
-                    $role=Role::all();
-                    $role->permissions()->sync($request->permission);
-                    //$role->save();
-                }
-            }
-        return redirect(route('permission.create'))->with('users', $users);
-    }
+    // public function permission($id, Request $request)
+    // {
+    //     $users=User::all();
+    //         foreach($users as $user)
+    //         {
+    //             if($user->id == $id)
+    //             {
+    //                 $role=Role::all();
+    //                 $role->permissions()->sync($request->permission);
+    //                 //$role->save();
+    //             }
+    //         }
+    //     return redirect(route('permission.create'))->with('users', $users);
+    // }
 }

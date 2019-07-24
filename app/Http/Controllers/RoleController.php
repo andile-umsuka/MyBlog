@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\Permission;
+use App\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -58,7 +59,9 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        $role=Role::where('id', $role->id)->get();
+        $user=User::all();
+        return view('role.show', compact('role','user'));
     }
 
     /**
@@ -67,6 +70,11 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
+
+    public function permission($id)
+    {
+
+    }
     public function edit($id)
     {
        $role=Role::find($id);

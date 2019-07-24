@@ -40,6 +40,7 @@
                       <th>Assigned Role</th>
                       <th>Edit</th>
                       <th>Delete</th>
+                      <th>Assign Permission</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -73,7 +74,8 @@
                           }">
                            Delete                      
                       @endcan
-                    </td> 
+                    </td>
+                    <td><a href="{{ route('role.show', $role->id) }}">Assign Permission</a></td> 
                     </tr>
                       @endforeach
     
@@ -85,7 +87,8 @@
                         <th>Email</th>
                         <th>Assigned Role</th>
                         <th>Edit</th>
-                        <th>Delete</th></th>
+                        <th>Delete</th>
+                        <th>Assign Permission</th>
                     </tr>
                     </tfoot>
                   </table>

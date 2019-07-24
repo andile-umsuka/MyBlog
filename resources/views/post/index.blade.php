@@ -20,6 +20,8 @@
                 <div class="form-group">
                   @can('posts.create', Auth::user())
                     <a href="{{ route('post.create') }}" class="btn btn-info">Create Post</a>
+                  @elsecan('create-post', Auth::user())
+                    <a href="{{ route('post.create') }}" class="btn btn-info">Create Post</a>
                   @endcan
                 </div>
                 <div class="box-body">
