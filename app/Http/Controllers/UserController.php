@@ -128,8 +128,14 @@ class UserController extends Controller
         if(Gate::allows('users.delete', Auth::user()))
         {
             User::where('id', $id)->delete();
-            return redirect(route('user.index'))->with('message', 'User created successfully');
+            return redirect(route('user.index'))->with('message', 'User deleted successfully');
         }else
+        if(Gate::allows('delete-user', Auth::user()))
+        {
+            User::where('id', $id)->delete();
+            return redirect(route('user.index'))->with('message', 'User deleted successfully');
+        }
+        else
         {
             return redirect(route('user.index'))->with('failure', 'Unauthorized access');
         }

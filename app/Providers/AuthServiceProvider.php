@@ -26,8 +26,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
         Gate::resource('posts', 'App\Policies\PostPolicy');
         Gate::resource('users', 'App\Policies\UserPolicy');
         Gate::define('create-post', function($user){
@@ -40,6 +38,18 @@ class AuthServiceProvider extends ServiceProvider
                         return false;
                     }
                 }
+        });
+
+        Gate::define('delete-user', function($user){
+            foreach($user->permissions as $permission)
+            {
+                if($permission -> id == 6)
+                {
+                    return true;
+                }else{
+                    return false;
+                }
+            }
         });
     }
 }

@@ -72,7 +72,21 @@
                           {
                             event.preventDefault();
                           }">
-                           Delete                      
+                           Delete                            
+                           @elsecan('delete-user', Auth::user())
+                           <form id="delete-form-{{ $user->id }}" action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: none">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                          </form>
+                          <a href="" onclick="if(confirm('Are you sure, You want to delete this?'))
+                          {
+                            event.preventDefault();
+                            document.getElementById('delete-form-{{ $user->id }}').submit();
+                          }else
+                          {
+                            event.preventDefault();
+                          }">
+                           Delete                   
                       @endcan
                     </td>
                     <td><a href="{{ route('role.show', $role->id) }}">Assign Permission</a></td> 

@@ -64,10 +64,9 @@
                                                     <div class="checkbox">
                                                         <label><input type="checkbox" name="permission[]" value="{{ $permission->id }}"
                                                             @foreach ($user->permissions as $user_permission)
-                                                            @if ($user_permission-> id == $permission->id)
-                                                                checked
-                                                            @endif
-                                                                
+                                                                @if ($user_permission-> id == $permission->id)
+                                                                    checked
+                                                                @endif                                                                
                                                             @endforeach
                                                             > {{ $permission->name }}</label>
                                                     </div>
